@@ -63,3 +63,18 @@
 * (2-е и 3-е к автоматизации отношение не имеют, поэтому я их сюда не копировал)
 
 
+## РЕШЕНИЕ
+
+1. Создаем репозиторий на ```github```
+2. Создаем репозиторий на локальной машине:
+ ```bash
+echo "# hizzl" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:VitGT73/hizzl.git
+git push -u origin main
+```
+3. Заполняем файл ```Readme.md``` (этот файл)
+4. Создаем файл ```.gitignore```

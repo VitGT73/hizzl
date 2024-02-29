@@ -1,0 +1,19 @@
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+.auth/
+*_spec3.json
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.env
+.env.local
+.env.staging
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
