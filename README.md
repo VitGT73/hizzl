@@ -78,3 +78,11 @@ git push -u origin main
 ```
 3. Заполняем файл ```Readme.md``` (этот файл)
 4. Создаем файл ```.gitignore```
+5. Устанавливаем Playwright и Allure:
+   ```npm i -D @playwright/test allure-playwright```
+6. Устанавливаем Allure для командной строки:
+   ```npm install -g allure-commandline --save-dev```
+7. Добавляем в ```playwright.config.js``` строку
+```js
+    reporter: [['html'], ['allure-playwright',{outputFolder:'allure-results'}]],
+```
