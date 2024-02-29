@@ -1,6 +1,18 @@
 {
+  "scripts": {
+    "test": "npx playwright test",
+    "test:debug": "npx playwright test --debug",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write",
+    "prepare": "husky install"
+  },
   "devDependencies": {
     "@playwright/test": "^1.42.0",
     "allure-playwright": "^2.13.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
   }
 }

@@ -86,3 +86,6 @@ git push -u origin main
 ```js
     reporter: [['html'], ['allure-playwright',{outputFolder:'allure-results'}]],
 ```
+8. Устанавливаем библиотеку для работы с виртуальным окружением:
+```npm install dotenv --save```
+

@@ -1,21 +1,8 @@
 import { defineConfig } from "@playwright/test";
-import { config } from "dotenv";
-import Env from "@helpers/env";
+import dotenv  from "dotenv";
 
-/* This allows you to pass in a `test_env` environment variable
-to specify which environment you want to run the tests against */
-if (process.env.test_env) {
-  config({
-    path: `.env.${process.env.test_env}`,
-    override: true,
-  });
-} else {
-  config();
-}
+dotenv.config();
 
-if (!process.env.CURRENTS_CI_BUILD_ID) {
-  process.env.CURRENTS_CI_BUILD_ID = "butch-local-" + new Date().getTime();
-}
 
 export default defineConfig({
   testDir: "./tests",
@@ -41,10 +28,8 @@ export default defineConfig({
   use: {
     extraHTTPHeaders: {
       "playwright-solutions": "true",
-      // "Accept": 'application/json',    // Удалить если не работает
     },
-    // baseURL: "https://petstore.swagger.io",
-    baseURL: Env.URL,
+    baseURL: process.env.BASE_URL,
     ignoreHTTPSErrors: true,
     trace: "on-first-retry",
   },
