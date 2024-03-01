@@ -1,15 +1,16 @@
 import { test, expect } from "@playwright/test";
 
 const campaignId = process.env.CAMPAIGN_ID;
-const path = `/auth/v1/game/${campaignId}/check-login`;
+const basePath = `/auth/v1/game/${campaignId}`;
 const email = process.env.EMAIL;
-let response;
+
 
 test.describe(`Коллекция Login`, async () => {
+  await test("Метод CheckLogin", async ({ request }) => {
+    const startTime = performance.now();
+    const path = `${basePath}/check-login`;
 
-  const startTime = performance.now();
-  await test("Метод Init", async ({ request }) => {
-    response = await request.post(`${path}`, {
+    const response = await request.post(`${path}`, {
       headers: {},
       data: { login: email },
     });
@@ -24,13 +25,16 @@ test.describe(`Коллекция Login`, async () => {
     });
 
     await test.step("Проверяем, что скорость ответа от сервера менее 200ms", async () => {
-      expect.soft(responseTime).toBeLessThan(500);
+      expect.soft(responseTime).toBeLessThan(200);
     });
 
     const body = await response.json();
     await test.step("Проверяем параметра token в ответе и сохраняем его в глобальную переменную", async () => {
       expect(body).toHaveProperty("accessToken");
       process.env.ACCESS_TOKEN = body.accessToken;
+      console.log('CheckLogin: ', body.accessToken)
+      console.log('ACCESS_TOKEN: ', process.env.ACCESS_TOKEN)
     });
   });
+
 });

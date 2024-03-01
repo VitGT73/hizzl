@@ -2,6 +2,7 @@
   "scripts": {
     "test": "npx playwright test",
     "test:debug": "npx playwright test --debug",
+    "allure": "allure generate allure-results -o allure-report --clean",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier . --check",
