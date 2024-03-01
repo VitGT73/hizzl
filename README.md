@@ -89,3 +89,6 @@ git push -u origin main
 8. Устанавливаем библиотеку для работы с виртуальным окружением:
 ```npm install dotenv --save```
 
+
+Генерируем Allure отчет
+```allure generate allure-results -o allure-report --clean```
