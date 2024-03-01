@@ -25,7 +25,7 @@ test.describe(`Коллекция Login`, async () => {
     });
 
     await test.step("Проверяем, что скорость ответа от сервера менее 200ms", async () => {
-      expect.soft(responseTime).toBeLessThan(500);
+      expect.soft(responseTime).toBeLessThan(200);
     });
 
     const body = await response.json();
