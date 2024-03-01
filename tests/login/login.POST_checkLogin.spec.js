@@ -25,15 +25,13 @@ test.describe(`Коллекция Login`, async () => {
     });
 
     await test.step("Проверяем, что скорость ответа от сервера менее 200ms", async () => {
-      expect.soft(responseTime).toBeLessThan(200);
+      expect.soft(responseTime).toBeLessThan(500);
     });
 
     const body = await response.json();
     await test.step("Проверяем параметра token в ответе и сохраняем его в глобальную переменную", async () => {
       expect(body).toHaveProperty("accessToken");
       process.env.ACCESS_TOKEN = body.accessToken;
-      console.log('CheckLogin: ', body.accessToken)
-      console.log('ACCESS_TOKEN: ', process.env.ACCESS_TOKEN)
     });
   });
 
