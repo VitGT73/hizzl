@@ -7,11 +7,15 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "newman:init": "newman run ./postman/INIT.postman_collection.json -e ./postman/hezzl.com.postman_environment.json -r cli,allure",
+    "newman:login": "newman run ./postman/INIT.postman_collection.json -e ./postman/hezzl.com.postman_environment.json -r cli,allure"
   },
   "devDependencies": {
     "@playwright/test": "^1.42.0",
-    "allure-playwright": "^2.13.0"
+    "allure-commandline": "^2.27.0",
+    "allure-playwright": "^2.13.0",
+    "newman-reporter-allure": "^2.13.0"
   },
   "dependencies": {
     "dotenv": "^16.4.5"

@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "5ed0af72-26d8-4b44-a53d-bdb45a9e493c",
+		"name": "LOGIN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29800373",
+		"_collection_link": "https://www.postman.com/vitgt/workspace/vitgt-qa/collection/29800373-5ed0af72-26d8-4b44-a53d-bdb45a9e493c?action=share&source=collection_link&creator=29800373"
+	},
+	"item": [
+		{
+			"name": "CheckLogin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Проверяем, что код ответа 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"var accessToken = jsonData.accessToken\r",
+							"\r",
+							"\r",
+							"pm.environment.set(\"accessToken\", accessToken);\r",
+							"pm.test(\"Проверяем, что скорость ответа от сервера менее 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\":{{email}}\r\n}    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/v1/game/:campaignId/check-login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"v1",
+						"game",
+						":campaignId",
+						"check-login"
+					],
+					"variable": [
+						{
+							"key": "campaignId",
+							"value": "{{campaignId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConfirmCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Проверяем, что код ответа 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Проверяем, что скорость ответа от сервера менее 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"code\": {{password}}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/v1/game/:campaignId/confirm-code",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"v1",
+						"game",
+						":campaignId",
+						"confirm-code"
+					],
+					"variable": [
+						{
+							"key": "campaignId",
+							"value": "{{campaignId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

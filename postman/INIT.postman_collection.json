@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "f3cb4507-78a8-40be-846c-c331c529120a",
+		"name": "INIT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29800373",
+		"_collection_link": "https://www.postman.com/vitgt/workspace/vitgt-qa/collection/29800373-f3cb4507-78a8-40be-846c-c331c529120a?action=share&source=collection_link&creator=29800373"
+	},
+	"item": [
+		{
+			"name": "Init",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Проверяем, что код ответа 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"var time = jsonData.time\r",
+							"var data = jsonData.data\r",
+							"console.log(time)\r",
+							"\r",
+							"pm.environment.set(\"timeZone\", time);\r",
+							"\r",
+							"pm.test(\"Проверяем наличие параметра data в ответе\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(data).to.be.exist;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Проверяем наличие параметра auth в data в ответе \", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(data.auth).to.be.exist;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/gw/v1/game/:campaignId/init",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"gw",
+						"v1",
+						"game",
+						":campaignId",
+						"init"
+					],
+					"variable": [
+						{
+							"key": "campaignId",
+							"value": "{{campaignId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

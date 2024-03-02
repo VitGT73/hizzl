@@ -1,8 +1,5 @@
 # Тестовое задание на позицию QA-инженера с сайта https://play.hezzl.com
 
-Текст заданий можно посмотреть [здесь](problems.md)
-
-Ответы на тестовые задания [тут](answers.md)
 ### ВВОДНЫЕ
 1. Игра Хезлмания расположена по адресу https://play.hezzl.com
 2. В консоли браузера можно посмотреть вызовы методов
@@ -68,29 +65,42 @@
 
 ## РЕШЕНИЕ
 
-1. Создаем папку на локальном компьютере:
-
+1. Создаем репозиторий на ```github```
+2. Создаем репозиторий на локальной машине:
  ```bash
-mkdir hizzl
+echo "# hizzl" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:VitGT73/hizzl.git
+git push -u origin main
 ```
-2. Клонируем репозиторий
-```bash
-git clone https://github.com/VitGT73/hizzl.git .
+3. Заполняем файл ```Readme.md``` (этот файл)
+4. Создаем файл ```.gitignore```
+5. Устанавливаем Playwright и Allure:
+   ```npm i -D @playwright/test allure-playwright```
+6. Устанавливаем Allure для командной строки:
+   ```npm install allure-commandline --save-dev```
 
+
+7. Добавляем в ```playwright.config.js``` строку
+```js
+    reporter: [['html'], ['allure-playwright',{outputFolder:'allure-results'}]],
 ```
-3. Устанавливаем все зависимости:
+8. Устанавливаем библиотеку для работы с виртуальным окружением:
+```npm install dotenv --save```
+
+
+Генерируем Allure отчет
+```allure generate allure-results -o allure-report --clean```
+
+
+* Устанавливаем Newman (Глобально!)
 ```bash
-npm install
+npm install -g newman
 ```
-4. Запускаем тесты:
+* Устанавливаем Allure для Newman:
 ```bash
-npm test
+npm install --save-dev newman-reporter-allure
 ```
-5. Генерируем allure-отчет:
-```bash
-allure generate
-```
-6. Посмотреть отчет можно в
-   ```bash
-   ./allure-report/index.html
-   ```

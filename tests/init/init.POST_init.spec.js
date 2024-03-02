@@ -1,11 +1,16 @@
 import { test, expect } from "@playwright/test";
+import { allure } from "allure-playwright";
+import { Severity } from "allure-js-commons";
 
 const campaignId = process.env.CAMPAIGN_ID;
 
 const path = `/gw/v1/game/${campaignId}/init`;
 
 test.describe(`Коллекция Init`, async () => {
+
   test("Метод Init", async ({ request }) => {
+      await allure.severity(Severity.CRITICAL);
+      await allure.tags("Init", "Essentials");
     const response = await request.post(`${path}`, {
       headers: {},
       data: {},
