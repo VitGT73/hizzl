@@ -3,11 +3,8 @@
     "test": "npx playwright test",
     "test:debug": "npx playwright test --debug",
     "allure": "allure generate allure-results -o allure-report --clean",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
-    "prepare": "husky install",
     "newman:init": "newman run ./postman/INIT.postman_collection.json -e ./postman/hezzl.com.postman_environment.json -r cli,allure",
     "newman:login": "newman run ./postman/LOGIN.postman_collection.json -e ./postman/hezzl.com.postman_environment.json -r cli,allure"
   },
