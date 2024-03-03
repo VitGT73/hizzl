@@ -18,15 +18,46 @@ git clone https://github.com/VitGT73/hizzl.git .
 ```bash
 npm install
 ```
-4. Запускаем тесты:
+Если необходимо установить `Newman`, то дополнительно выполняем следующие две команды:
+
+  * установка `newman`:
+  ```bash
+  npm install -g newman
+  ```
+  * установка `allure для newman`:
+  ```bash
+  npm install -g newman-reporter-allure
+  ```
+
+
+Запуск тестов на JS:
+
 ```bash
 npm test
 ```
-5. Генерируем allure-отчет:
+
+Генерация allure-отчета:
 ```bash
 allure generate
 ```
-6. Посмотреть отчет можно в
+Сгенерированный отчет лежит здесь:
    ```bash
    ./allure-report/index.html
    ```
+
+Запуск коллекций Postman:
+
+- коллекции Init:
+```bash
+newman run ./postman/INIT.postman_collection.json -e ./postman/hezzl.com.postman_environment.json -r cli,allure
+```
+- коллекции Login:
+```bash
+newman run ./postman/LOGIN.postman_collection.json -e ./postman/hezzl.com.postman_environment.json -r cli,allure
+
+```
+Запуск тех же коллекций с помощью аллиаса:
+```bash
+npm run newman:init
+npm run newman:login
+```
