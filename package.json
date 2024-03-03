@@ -9,7 +9,7 @@
     "prettier:fix": "prettier . --write",
     "prepare": "husky install",
     "newman:init": "newman run ./postman/INIT.postman_collection.json -e ./postman/hezzl.com.postman_environment.json -r cli,allure",
-    "newman:login": "newman run ./postman/INIT.postman_collection.json -e ./postman/hezzl.com.postman_environment.json -r cli,allure"
+    "newman:login": "newman run ./postman/LOGIN.postman_collection.json -e ./postman/hezzl.com.postman_environment.json -r cli,allure"
   },
   "devDependencies": {
     "@playwright/test": "^1.42.0",

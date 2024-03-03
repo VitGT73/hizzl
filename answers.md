@@ -1,19 +1,42 @@
-# Тестовое задание на позицию QA-инженера с сайта https://play.hezzl.com
+# Решения тестовых заданий на позицию QA-инженера с сайта https://play.hezzl.com
 
-### ВВОДНЫЕ
-1. Игра Хезлмания расположена по адресу https://play.hezzl.com
-2. В консоли браузера можно посмотреть вызовы методов
-3. Оранжевым цветом обозначены переменные, которые нужно подтягивать из Environment
+Текст заданий можно посмотреть [здесь](problems.md)
 
-### НАСТРОЙКА ENVIRONMENT
-1. email = "test@hezzl.com"
-2. password = "123456"
-3. baseUrl = https://api-prod.hezzl.com
-4. campaignId = 145602
-5. accessToken = string
-6. timeZone = string
+### Задание №1
+- Файлы коллекций и окружения находятся в папке `./postman`
+- Коллекции можно запустить из командной строки используя `newman`.
+- Для запуска коллекции Init необходимо выполнить команду:
+```bash
+newman run ./postman/INIT.postman_collection.json -e ./postman/hezzl.com.postman_environment.json -r cli,allure
+```
+или воспользоваться аллиасом:
+```bash
+npm run newman:init
+```
 
-## ЗАДАНИЕ 1
+- Для запуска коллекции Login необходимо выполнить команду:
+```bash
+newman run ./postman/LOGIN.postman_collection.json -e ./postman/hezzl.com.postman_environment.json -r cli,allure
+```
+или воспользоваться аллиасом:
+```bash
+npm run newman:login
+```
+
+### Задание №2
+```sql
+SELECT *
+FROM table_name
+WHERE campaignId = 145602
+   AND date >= '2023-12-31'
+   AND date < '2024-01-31';
+```
+
+### Задание №3
+
+Примеры позитивных и негативных тест-кейсов на регистрацию пользователя в игре Хезлмания по email в формате pdf - [тут](./docs/hezzl-%20тестовый%20набор.pdf)
+
+
 
 ### КОЛЛЕКЦИЯ INIT
 Метод **Init**
