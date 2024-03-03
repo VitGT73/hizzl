@@ -4,15 +4,14 @@
 
 Ответы на тестовые задания [тут](answers.md)
 
-1. Создаем папку на локальном компьютере:
-
- ```bash
-mkdir hizzl
-```
-2. Клонируем репозиторий
+1. Клонируем репозиторий
 ```bash
-git clone https://github.com/VitGT73/hizzl.git .
+git clone https://github.com/VitGT73/hizzl.git
 
+```
+2. Переходим в папку hizzl:
+```bash
+cd hizzl
 ```
 3. Устанавливаем все зависимости:
 ```bash
